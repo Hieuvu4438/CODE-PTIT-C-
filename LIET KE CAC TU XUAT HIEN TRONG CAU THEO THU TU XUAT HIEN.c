@@ -1,26 +1,26 @@
 #include <stdio.h>
-#include <string.h>
 #include <ctype.h>
+#include <string.h>
 #include <stdlib.h>
-int dem[100005];
+
 int main(){
-	int s1[1000];
-	gets(s1);
-	char *token = strtok(s1, " ");
+	char c[1000];
+	gets(c);
+	char a[20][50];
 	int n = 0;
-	int a[50][50];
+	char *token = strtok(c," ");
 	while(token != NULL){
 		strcpy(a[n], token);
 		++n;
 		token = strtok(NULL, " ");
 	}
 	for(int i = 0; i < n; i++){
-		int check = 1;
+		int ok = 1;
 		for(int j = 0; j < i; j++){
-			if(strcmp(a[i], a[j]) == 1) check = 0;
+			if(strcmp(a[i], a[j]) == 0){
+				ok = 0; break;
+			}
 		}
-		if(check){
-			printf("%s ", a[i]);
-		}
+		if(ok) printf("%s ", a[i]);
 	}
-}
+} 
