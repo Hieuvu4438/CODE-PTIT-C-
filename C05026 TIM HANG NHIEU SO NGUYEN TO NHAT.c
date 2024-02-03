@@ -15,29 +15,28 @@ int main(){
 		for(int j = 0; j < n; j++){
 			scanf("%d", &a[i][j]);
 		}
-		
 	}
-	int max = 0;
+	int sum = 0;
+	int max = -1e9;
 	int idx = 0;
 	for(int i = 0; i < n; i++){
-		int cnt = 0;
 		for(int j = 0; j < n; j++){
 			if(checknt(a[i][j])){
-				++cnt;
+				++sum;
 			}
 		}
-		if(cnt > max){	
-			max = cnt;
+		if(sum > max){
+			max = sum;
 			idx = i;
+			sum = 0;
 		}
 	}
-	printf("%d\n", idx+1);
+	printf("%d\n", idx);
 	for(int i = 0; i < n; i++){
 		if(i == idx){
 			for(int j = 0; j < n; j++){
 				if(checknt(a[i][j])) printf("%d ", a[i][j]);
 			}
-			break;
 		}
 	}
 }
