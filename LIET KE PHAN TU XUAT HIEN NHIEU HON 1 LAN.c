@@ -1,26 +1,27 @@
 #include <stdio.h>
-int dem[100005];
-int dem1[100005];
+void sapxep(int a[], int n){
+	for(int i = 0; i < n; i++){
+		for(int j = i + 1; j < n; i++){
+			if(a[i] > a[j]){
+				int temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+			}
+		}
+	}
+}
 int main(){
-	int n; scanf("%d", &n);
+	int n;
+	scanf("%d", &n);
 	int a[n];
 	for(int i = 0; i < n; i++){
 		scanf("%d", &a[i]);
-		++dem[a[i]];
-		++dem1[a[i]];
 	}
-	int cnt = 0;
+	sapxep(a, n);
 	for(int i = 0; i < n; i++){
-		if(dem1[a[i]] > 1){
-			++cnt;
-			dem1[a[i]] = 0;
-		}
-	}
-	printf("%d\n", cnt);
-	for(int i = 0; i < n; i++){
-		if(dem[a[i]] > 1){
-			printf("%d ", a[i]);
-			dem[a[i]] = 0;
-		}
+		int cnt = 1;
+		for(int j = i + 1; j < n; j++){
+			if(a[i] == a[j]) printf("%d ", a[i]);
+		}	
 	}
 }
